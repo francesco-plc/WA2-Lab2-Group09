@@ -22,7 +22,7 @@ import java.util.*
 class ServerApplication{
     @Bean
     fun key() : Key = Keys.hmacShaKeyFor("laboratorio2webapplications2ProfessorGiovanniMalnati".toByteArray())
-    @Bean
+   /* @Bean
     fun token(key : Key) : CommandLineRunner{
         return CommandLineRunner {
             val jws = Jwts.builder().setSubject("Joe").setExpiration(Date()).signWith(key).compact()
@@ -39,7 +39,7 @@ class ServerApplication{
             val response = client.send(request, HttpResponse.BodyHandlers.ofString());
             println(response.body())
         }
-    }
+    }*/
 }
 
 fun main(args: Array<String>) {

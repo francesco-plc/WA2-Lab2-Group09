@@ -32,4 +32,4 @@ class Controller(val ticketService: TicketService) {
     }
 
 }
-data class TicketDTO( val zone:String, val token : String)
+data class TicketDTO( val zone : String, val token : String)
