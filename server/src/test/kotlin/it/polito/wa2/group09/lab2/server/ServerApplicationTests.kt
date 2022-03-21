@@ -53,7 +53,6 @@ class ServerApplicationTests {
         val baseUrl = "http://localhost:$port"
         val t = TicketDTO("", "aaa.bbb.ccc")
         val request = HttpEntity(t)
-        println(request)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
         assert(response.statusCode === HttpStatus.FORBIDDEN)
     }
@@ -62,7 +61,6 @@ class ServerApplicationTests {
         val baseUrl = "http://localhost:$port"
         val t = TicketDTO("1", "")
         val request = HttpEntity(t)
-        println(request)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
         assert(response.statusCode === HttpStatus.FORBIDDEN)
     }
@@ -71,7 +69,6 @@ class ServerApplicationTests {
         val baseUrl = "http://localhost:$port"
         val t = TicketDTO("1", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzc2MjM5MDIyLCJleHAiOjE3NzYyMzkwMjIsInZ6IjoiMTIzIn0.V40jee26UUl3J0p5KT8QD7U9f7h4eLaxJLmiL_z0eFA")
         val request = HttpEntity(t)
-        println(request)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
         assert(response.statusCode === HttpStatus.OK)
     }
