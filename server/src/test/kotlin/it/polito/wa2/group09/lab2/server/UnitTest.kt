@@ -1,5 +1,6 @@
 package it.polito.wa2.group09.lab2.server
 
+import junit.framework.Assert.assertEquals
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,25 +14,39 @@ class UnitTest {
 
     @Test
     fun illegalZone() {
-        Assertions.assertThrows(IllegalArgumentException::class.java) {
-            ticketService.validateTicket("7", "aaa.bbb.ccc")
+        val exception: IllegalArgumentException= Assertions.assertThrows(IllegalArgumentException::class.java) {
+            ticketService.validateTicket("7", "aaa.bbb.ccc") ///QUI TOKEN VALIDO, ZONA NON VALIDA
         }
+        assertEquals("Token is not valid!", exception.message);
     }
 
     @Test
     fun expiredToken() {
-        Assertions.assertThrows(IllegalArgumentException::class.java) { //this token is set on Jan 18 2018
+        val exception: IllegalArgumentException  = Assertions.assertThrows(IllegalArgumentException::class.java) { //this token is set on Jan 18 2018
             ticketService.validateTicket(
                 "1",
                 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.-DRSwRSZVPXaXVQZ3zkj3wqibKWgvOsA600QJCNKdxI"
             )
         }
+        println(exception)
+        assertEquals("Expired ticket", exception.message);
     }
 
     @Test
     fun invalidToken() {
         Assertions.assertThrows(IllegalArgumentException::class.java) {
             ticketService.validateTicket("1", "abc")
+        }
+    }
+
+    @Test
+    fun validToken() {
+        Assertions.assertDoesNotThrow()
+        {
+            ticketService.validateTicket(
+                "1",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzc2MjM5MDIyLCJleHAiOjE3NzYyMzkwMjIsInZ6IjoiMTIzIn0.V40jee26UUl3J0p5KT8QD7U9f7h4eLaxJLmiL_z0eFA"
+            )
         }
     }
 

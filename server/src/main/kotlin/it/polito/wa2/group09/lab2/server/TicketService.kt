@@ -12,7 +12,6 @@ class TicketService(val key : Key) {
             try {
                 val jwt = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token)
                 val zones : String = jwt.body["vz"].toString()
-                println(jwt.body["exp"])
                 val exp : Long = jwt.body["exp"].toString().toLong()
                 val now : Long = System.currentTimeMillis()/1000
                 if(exp-now <= 0) throw IllegalArgumentException("Expired ticket")
