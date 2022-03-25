@@ -24,6 +24,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.2")
+    implementation("org.apache.commons:commons-csv:1.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation(kotlin("test-junit"))

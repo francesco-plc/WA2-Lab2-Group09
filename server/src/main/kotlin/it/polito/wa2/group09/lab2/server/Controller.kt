@@ -14,14 +14,14 @@ class Controller(val ticketService: TicketService) {
 //        return Payload("200")
 //    }
     @PostMapping("/validate")
-    fun posting(@RequestBody ticketDTO: TicketDTO): ResponseEntity<String>{
-        if(ticketDTO.zone.isEmpty()) return ResponseEntity("Invalid Zone!" , HttpStatus.FORBIDDEN )
-        if(ticketDTO.token.isEmpty()) return ResponseEntity("Missing Token!" , HttpStatus.FORBIDDEN )
+    fun posting(@RequestBody ticketDTO: TicketDTO): ResponseEntity<Unit>{
+        if(ticketDTO.zone.isEmpty()) return ResponseEntity(HttpStatus.FORBIDDEN )
+        if(ticketDTO.token.isEmpty()) return ResponseEntity( HttpStatus.FORBIDDEN )
     return try {
         ticketService.validateTicket(ticketDTO.zone,ticketDTO.token)
-        ResponseEntity("Ok",HttpStatus.OK)
+        ResponseEntity(HttpStatus.OK)
     } catch (t : Throwable){
-        ResponseEntity("Invalid Token!" , HttpStatus.FORBIDDEN )
+        ResponseEntity( HttpStatus.FORBIDDEN )
         }
     }
 
