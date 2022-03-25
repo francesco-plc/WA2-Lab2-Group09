@@ -12,7 +12,7 @@ import java.text.DecimalFormat
 
 class USL {
     companion object {
-        @JvmStatic public fun main(args : Array<String>){
+        @JvmStatic fun main(args : Array<String>){
             fun buildModel() {
                 val writer = Files.newBufferedWriter(Paths.get("server/src/main/resources/usl.csv"))
                 val csvPrinter = CSVPrinter(writer, CSVFormat.EXCEL.withDelimiter(';')
