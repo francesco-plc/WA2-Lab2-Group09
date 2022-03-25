@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "loadtest": "*"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
 }
