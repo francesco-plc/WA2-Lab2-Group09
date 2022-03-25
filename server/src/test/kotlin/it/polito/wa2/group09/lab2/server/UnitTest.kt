@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import kotlin.test.assertContains
+
 
 @SpringBootTest
 class UnitTest {
@@ -25,11 +27,11 @@ class UnitTest {
         val exception: IllegalArgumentException  = Assertions.assertThrows(IllegalArgumentException::class.java) { //this token is set on Jan 18 2018
             ticketService.validateTicket(
                 "1",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.-DRSwRSZVPXaXVQZ3zkj3wqibKWgvOsA600QJCNKdxI"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTYyMzkwMjIsInZ6IjoiMTIzIn0.kdaASj1f1DILzjU0W_wXjY28os_lL6JbNHed00EgCK4"
             )
         }
         println(exception)
-        assertEquals("Expired ticket", exception.message);
+        assertContains(exception.message.toString(),"JWT expired at 2018-01-18T01:30:22Z.")
     }
 
     @Test
