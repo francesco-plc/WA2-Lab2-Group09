@@ -2,7 +2,6 @@
 
 const jwt = require("jsonwebtoken");
 
-//TODO: mettere la pK in un file a parte o tenerla qui in chiaro???
 const correctPrivateKey = 'laboratorio2webapplications2ProfessorGiovanniMalnati';
 const incorrectPrivateKey = 'laboratorio1webapplications1ProfessorGiovanniMalnati';
 

@@ -5,16 +5,19 @@ import io.jsonwebtoken.Jwts
 import org.springframework.stereotype.Service
 import java.security.Key
 import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.ConcurrentMap
 
 
 @Service
 class TicketService(val key : Key) {
+    var sub_map: ConcurrentHashMap<String, Int> = ConcurrentHashMap()
     fun validateTicket(zone : String , token : String){
             try {
                 val jwt = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token)
                 val zones : String = jwt.body["vz"].toString()
+                val sub: String = jwt.body["sub"].toString()
                 if(!zones.contains(zone)) throw IllegalArgumentException("Illegal zone")
+                if(sub_map.contains(sub)) throw IllegalArgumentException("Ticket already used!")
+                sub_map[sub] = 1
                 /* val exp : Long = jwt.body["exp"].toString().toLong()
                    val now : Long = System.currentTimeMillis()/1000
                    if(exp-now <= 0) throw IllegalArgumentException("Expired ticket")*/
