@@ -10,7 +10,7 @@
 | Policastro | Francesco   | s281705 |
 
 
-##LoadTest instrucion:
+## LoadTest instrucion:
 1) Build & Run ServerApplication
 2) From the terminal:
    1) move into the `\benchmark` folder 

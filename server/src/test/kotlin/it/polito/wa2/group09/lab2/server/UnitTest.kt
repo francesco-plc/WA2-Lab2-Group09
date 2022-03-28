@@ -52,7 +52,7 @@ class UnitTest {
             /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
             ticketService.validateTicket(
                 "1",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkxIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE2ODAwMzAyOTYsInZ6IjoxMjN9.GplomdwmoJxTV1Ih4uwTlhVplll0oHc1ca9-5IgDQKQ"
             )
         }
     }
