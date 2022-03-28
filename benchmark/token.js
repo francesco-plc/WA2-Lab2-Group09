@@ -10,10 +10,10 @@ const now =  Math.floor(Date.now() / 1000) + (60 * 60)    //defines a token with
 // this object will be serialized to JSON and sent in the body of the script request in  benchmark.js
 module.exports = function(requestId) {
     //randomly create valid/invalid token fields
-    const zone =  "1"
-    const vz =  "123"
-    const exp =  now+1
-    const privateKey =  correctPrivateKey
+    const zone = Math.random() < 0.5 ? "1" : "7"
+    const vz = Math.random() < 0.5 ? "123" : "7"
+    const exp = Math.random() < 0.5 ? now+1 : 1516239022
+    const privateKey = Math.random() < 0.5 ? correctPrivateKey : incorrectPrivateKey
 
     return {
         zone: zone,

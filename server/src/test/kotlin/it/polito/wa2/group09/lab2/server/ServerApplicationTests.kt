@@ -24,7 +24,8 @@ class ServerApplicationTests {
     @Test
     fun rejectInvalidZone() {
         val baseUrl = "http://localhost:$port"
-        val t = TicketDTO("", "aaa.bbb.ccc")
+        /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+        val t = TicketDTO("7", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
         assertEquals(HttpStatus.FORBIDDEN,response.statusCode)
@@ -35,7 +36,7 @@ class ServerApplicationTests {
         val t = TicketDTO("1", "")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
-        assertEquals(HttpStatus.FORBIDDEN,response.statusCode)
+        assertEquals(HttpStatus.FORBIDDEN, response.statusCode)
     }
     @Test
     fun rejectInvalidToken() {
@@ -43,15 +44,27 @@ class ServerApplicationTests {
         val t = TicketDTO("1", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.-DRSwRSZVPXaXVQZ3zkj3wqibKWgvOsA600QJCNKdxI")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
-        assertEquals(HttpStatus.FORBIDDEN,response.statusCode)
+        assertEquals(HttpStatus.FORBIDDEN, response.statusCode)
     }
     @Test
     fun acceptValidToken() {
         val baseUrl = "http://localhost:$port"
-        val t = TicketDTO("1", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzc2MjM5MDIyLCJleHAiOjE3NzYyMzkwMjIsInZ6IjoiMTIzIn0.V40jee26UUl3J0p5KT8QD7U9f7h4eLaxJLmiL_z0eFA")
+        /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+        val t = TicketDTO("1", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
         assertEquals(HttpStatus.OK,response.statusCode )
     }
 
+    @Test
+    fun rejectInvalidSub() {
+        val baseUrl = "http://localhost:$port"
+        /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+        val t = TicketDTO("1",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY")
+        val request = HttpEntity(t)
+        val response1 = restTemplate.postForEntity<String>("$baseUrl/validate", request)
+        val response2 = restTemplate.postForEntity<String>("$baseUrl/validate", request)
+        assertEquals(HttpStatus.FORBIDDEN, response2.statusCode)
+    }
 }

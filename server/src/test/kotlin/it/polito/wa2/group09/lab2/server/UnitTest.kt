@@ -17,21 +17,25 @@ class UnitTest {
     @Test
     fun illegalZone() {
         val exception: IllegalArgumentException= Assertions.assertThrows(IllegalArgumentException::class.java) {
-            ticketService.validateTicket("7", "aaa.bbb.ccc")
+            /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+            ticketService.validateTicket(
+                "7",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
+            )
         }
-        assertEquals("Token is not valid!", exception.message);
+        assertEquals("Illegal zone", exception.message);
     }
 
     @Test
     fun expiredToken() {
         val exception: IllegalArgumentException  = Assertions.assertThrows(IllegalArgumentException::class.java) { //this token is set on Jan 18 2018
+            /** {"sub": "1234567891", "vz": "123", "exp": 1316239022}*/
             ticketService.validateTicket(
                 "1",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTYyMzkwMjIsInZ6IjoiMTIzIn0.kdaASj1f1DILzjU0W_wXjY28os_lL6JbNHed00EgCK4"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkxIiwidnoiOiIxMjMiLCJleHAiOjEzMTYyMzkwMjJ9.z3EF1CKUZCWvV7RMkK4UlkQxS7Tl7DQSYRO_NJ6YruY"
             )
         }
-        println(exception)
-        assertContains(exception.message.toString(),"JWT expired at 2018-01-18T01:30:22Z.")
+        assertContains(exception.message.toString(),"JWT expired at 2011-09-17T05:57:02Z.")
     }
 
     @Test
@@ -45,11 +49,28 @@ class UnitTest {
     fun validToken() {
         Assertions.assertDoesNotThrow()
         {
+            /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
             ticketService.validateTicket(
                 "1",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzc2MjM5MDIyLCJleHAiOjE3NzYyMzkwMjIsInZ6IjoiMTIzIn0.V40jee26UUl3J0p5KT8QD7U9f7h4eLaxJLmiL_z0eFA"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
             )
         }
+    }
+
+    @Test
+    fun invalidSub() {
+        val exception: IllegalArgumentException  = Assertions.assertThrows(IllegalArgumentException::class.java) {
+            /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+            ticketService.validateTicket(
+                "1",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
+            )
+            ticketService.validateTicket(
+                "1",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
+            )
+        }
+        assertContains(exception.message.toString(),"Ticket already used!")
     }
 
 }
