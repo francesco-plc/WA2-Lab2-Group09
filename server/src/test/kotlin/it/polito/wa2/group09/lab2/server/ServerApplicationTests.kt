@@ -27,7 +27,6 @@ class ServerApplicationTests {
         val t = TicketDTO("", "aaa.bbb.ccc")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
-        assertEquals("Invalid Zone!", response.body)
         assertEquals(HttpStatus.FORBIDDEN,response.statusCode)
     }
     @Test
@@ -36,7 +35,6 @@ class ServerApplicationTests {
         val t = TicketDTO("1", "")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
-        assertEquals("Missing Token!", response.body)
         assertEquals(HttpStatus.FORBIDDEN,response.statusCode)
     }
     @Test
@@ -45,7 +43,6 @@ class ServerApplicationTests {
         val t = TicketDTO("1", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.-DRSwRSZVPXaXVQZ3zkj3wqibKWgvOsA600QJCNKdxI")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
-        assertEquals("Invalid Token!", response.body)
         assertEquals(HttpStatus.FORBIDDEN,response.statusCode)
     }
     @Test
@@ -54,7 +51,6 @@ class ServerApplicationTests {
         val t = TicketDTO("1", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNzc2MjM5MDIyLCJleHAiOjE3NzYyMzkwMjIsInZ6IjoiMTIzIn0.V40jee26UUl3J0p5KT8QD7U9f7h4eLaxJLmiL_z0eFA")
         val request = HttpEntity(t)
         val response = restTemplate.postForEntity<String>("$baseUrl/validate",request)
-        assertEquals("Ok", response.body)
         assertEquals(HttpStatus.OK,response.statusCode )
     }
 

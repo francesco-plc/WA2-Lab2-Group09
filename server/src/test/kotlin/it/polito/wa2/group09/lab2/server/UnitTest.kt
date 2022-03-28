@@ -17,7 +17,7 @@ class UnitTest {
     @Test
     fun illegalZone() {
         val exception: IllegalArgumentException= Assertions.assertThrows(IllegalArgumentException::class.java) {
-            ticketService.validateTicket("7", "aaa.bbb.ccc") ///QUI TOKEN VALIDO, ZONA NON VALIDA
+            ticketService.validateTicket("7", "aaa.bbb.ccc")
         }
         assertEquals("Token is not valid!", exception.message);
     }
