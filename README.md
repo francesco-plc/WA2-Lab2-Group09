@@ -18,6 +18,10 @@
    3) launch `node .\benchmark.js` command
 3) Wait until RESULT are shown in the terminal
 
+## USL Plot Lab2/Point 5
+
+![usl1](server/src/main/resources/usl.jpg?raw=true "usl1")
+
 ### keep-alive connection
 loadtest -p -k token.js -n 2 -c 2 http://localhost:8080/validate -T application/json
 
