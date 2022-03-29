@@ -17,8 +17,15 @@ class USL {
                 val writer = Files.newBufferedWriter(Paths.get("server/src/main/resources/usl.csv"))
                 val csvPrinter = CSVPrinter(writer, CSVFormat.EXCEL.withDelimiter(';')
                     .withHeader("Concurrency Level","Req/Sec"))
+
+//                Lab2/Point 5 --> Req/Sec per Concurrency Level:
+//                val points =
+//                    arrayOf(doubleArrayOf(1.0, 156.0), doubleArrayOf(2.0, 313.0), doubleArrayOf(4.0, 510.0), doubleArrayOf(8.0, 831.0), doubleArrayOf(16.0, 1115.0), doubleArrayOf(32.0, 1100.0))
+
+//              Lab2/Point 6 --> Req/Sec per Concurrency Level:
                 val points =
-                    arrayOf(doubleArrayOf(1.0, 156.0), doubleArrayOf(2.0, 313.0), doubleArrayOf(4.0, 510.0), doubleArrayOf(8.0, 831.0), doubleArrayOf(16.0, 1115.0), doubleArrayOf(32.0, 1100.0))
+                    arrayOf(doubleArrayOf(1.0, 187.0), doubleArrayOf(2.0, 357.0), doubleArrayOf(4.0, 429.0), doubleArrayOf(8.0, 647.0), doubleArrayOf(16.0, 1244.0), doubleArrayOf(32.0, 1302.0))
+
 
                 // Map the points to measurements of concurrency and throughput, then build a model from them.
                 val model = Arrays.stream(points)

@@ -10,17 +10,22 @@
 | Policastro | Francesco   | s281705 |
 
 
-## LoadTest instrucion:
+## LoadTest instruction:
 1) Build & Run ServerApplication
 2) From the terminal:
    1) move into the `\benchmark` folder 
-   2) (if not already done: install **loadtest** `npm install -g loadtest` and **jsonwebtoken** `npm install jsonwebtoken`)
+   2) **OPTIONAL**: (if not already done: install **loadtest** `npm install -g loadtest` and **jsonwebtoken** `npm install jsonwebtoken`)
    3) launch `node .\benchmark.js` command
 3) Wait until RESULT are shown in the terminal
 
-## USL Plot Lab2/Point 5
+### USL Plot Lab2/Point 5
 
-![usl1](server/src/main/resources/usl.jpg?raw=true "usl1")
+![usl1](server/src/main/resources/usl1.jpg?raw=true "usl1")
+
+### USL Plot Lab2/Point 6
+
+![usl2](server/src/main/resources/usl2.jpg?raw=true "usl2")
+
 
 ### keep-alive connection
 loadtest -p -k token.js -n 2 -c 2 http://localhost:8080/validate -T application/json
