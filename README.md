@@ -27,9 +27,6 @@ In `benchmark.js` file modify the loadtest command line to perform different tes
 2) time-limit: Max number of seconds to wait until requests no longer go out:
 
 `loadtest -t 5 -p token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
-3) -T content-type: set the MIME content type for POST data. Default: text/plain:
-
-`loadtest -p 10 token.js -n [number-of-request] -c [concurrency-level]  http://localhost:8080/validate`
 
 <hr/>
 
@@ -49,6 +46,9 @@ decreases.
 ### USL Plot Lab2/Point 7 (Keep Alive)
 
 ![usl3](server/src/main/resources/usl3.jpg?raw=true "usl3")
+
+TTP Keep-alive is the mechanism that instructs the client and server to maintain a persistent TCP connection, decoupling the one-to-one relationship between TCP and HTTP, effectively increasing the scalability of the server.
+According to the Universal Scalability Law, since the gamma parameter increases, the average system throughput will increase too, as shown in the graph.
 
 ### USL Plot Lab2/Point 7 (Time Limit)
 
