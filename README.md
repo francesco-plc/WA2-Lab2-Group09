@@ -53,3 +53,6 @@ According to the Universal Scalability Law, since the gamma parameter increases,
 ### USL Plot Lab2/Point 7 (Time Limit)
 
 ![usl4](server/src/main/resources/usl4.jpg?raw=true "usl4")
+
+As shown in the image, in this case the maximum capacity is the same of using the default value for the time limit. 
+But in this case the number of requests per second decreases slower than the previous case, even in case of high concurrency level. 
