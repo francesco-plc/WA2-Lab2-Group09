@@ -18,13 +18,21 @@ class USL {
                 val csvPrinter = CSVPrinter(writer, CSVFormat.EXCEL.withDelimiter(';')
                     .withHeader("Concurrency Level","Req/Sec"))
 
-//                Lab2/Point 5 --> Req/Sec per Concurrency Level:
+//              Lab2/Point 5 --> Req/Sec per Concurrency Level:
 //                val points =
 //                    arrayOf(doubleArrayOf(1.0, 156.0), doubleArrayOf(2.0, 313.0), doubleArrayOf(4.0, 510.0), doubleArrayOf(8.0, 831.0), doubleArrayOf(16.0, 1115.0), doubleArrayOf(32.0, 1100.0))
 
 //              Lab2/Point 6 --> Req/Sec per Concurrency Level:
+//                val points =
+//                    arrayOf(doubleArrayOf(1.0, 162.0), doubleArrayOf(2.0, 263.0), doubleArrayOf(4.0, 386.0), doubleArrayOf(8.0, 627.0), doubleArrayOf(16.0, 992.0), doubleArrayOf(32.0, 1014.0))
+
+//              Lab2/Point 7 (Keep Alive) --> Req/Sec per Concurrency Level:
+//                val points =
+//                    arrayOf(doubleArrayOf(1.0, 254.0), doubleArrayOf(2.0, 486.0), doubleArrayOf(4.0, 1598.0), doubleArrayOf(8.0, 2039.0), doubleArrayOf(16.0, 2207.0), doubleArrayOf(32.0, 2196.0))
+
+//              Lab2/Point 7 (Time Limit)--> Req/Sec per Concurrency Level:
                 val points =
-                    arrayOf(doubleArrayOf(1.0, 162.0), doubleArrayOf(2.0, 263.0), doubleArrayOf(4.0, 386.0), doubleArrayOf(8.0, 627.0), doubleArrayOf(16.0, 992.0), doubleArrayOf(32.0, 1014.0))
+                    arrayOf(doubleArrayOf(1.0, 196.0), doubleArrayOf(2.0, 338.0), doubleArrayOf(4.0, 414.0), doubleArrayOf(8.0, 610.0), doubleArrayOf(16.0, 999.0), doubleArrayOf(32.0, 1015.0))
 
 
                 // Map the points to measurements of concurrency and throughput, then build a model from them.

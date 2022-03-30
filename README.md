@@ -23,10 +23,10 @@ In `benchmark.js` file modify the loadtest command line to perform different tes
 
 1) keep-alive connection:
 
-`loadtest -p -k token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
+`loadtest -k -p token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
 2) time-limit: Max number of seconds to wait until requests no longer go out:
 
-`loadtest -p -t 10 token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
+`loadtest -t 5 -p token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
 3) -T content-type: set the MIME content type for POST data. Default: text/plain:
 
 `loadtest -p 10 token.js -n [number-of-request] -c [concurrency-level]  http://localhost:8080/validate`
@@ -46,4 +46,10 @@ this is because adding a constraints (tickets with the same subfield cannot be u
 (ConcurrentHashMap) the alpha and beta parameters, therefore, increase so that the absolute maximum capacity gain is obtained 𝑁 = √ ((1 − 𝛼) / 𝛽)
 decreases.
 
+### USL Plot Lab2/Point 7 (Keep Alive)
 
+![usl3](server/src/main/resources/usl3.jpg?raw=true "usl3")
+
+### USL Plot Lab2/Point 7 (Time Limit)
+
+![usl4](server/src/main/resources/usl4.jpg?raw=true "usl4")
