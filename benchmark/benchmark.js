@@ -11,3 +11,5 @@ exec('loadtest -p token.js -n 10000 -c 32 http://localhost:8080/validate -T appl
         }
     });
 
+console.log('-----------------------------------')
+console.log('loadtest running...wait for result!')

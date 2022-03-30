@@ -24,7 +24,7 @@ class USL {
 
 //              Lab2/Point 6 --> Req/Sec per Concurrency Level:
                 val points =
-                    arrayOf(doubleArrayOf(1.0, 187.0), doubleArrayOf(2.0, 357.0), doubleArrayOf(4.0, 429.0), doubleArrayOf(8.0, 647.0), doubleArrayOf(16.0, 1244.0), doubleArrayOf(32.0, 1302.0))
+                    arrayOf(doubleArrayOf(1.0, 162.0), doubleArrayOf(2.0, 263.0), doubleArrayOf(4.0, 386.0), doubleArrayOf(8.0, 627.0), doubleArrayOf(16.0, 992.0), doubleArrayOf(32.0, 1014.0))
 
 
                 // Map the points to measurements of concurrency and throughput, then build a model from them.
