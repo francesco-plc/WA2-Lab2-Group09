@@ -43,7 +43,7 @@ In `benchmark.js` file modify the loadtest command line to perform different tes
 
 As we can see in the graph above the curve has both a slightly lower peak than the graph of point 5 and tends to reach zero faster, 
 this is because adding a constraints (tickets with the same subfield cannot be used more times) and introducing a concurrent data structure 
-(ConcurrentHashMap) the alpha and beta parameters, therefore, increase so that the absolute maximum capacity gain is obtained 𝑁 = √ ((1 − 𝛼) / 𝛽)
+(ConcurrentHashMap) the alpha and beta parameters, therefore, increase so that the absolute maximum capacity gain obtained 𝑁 = √ ((1 − 𝛼) / 𝛽)
 decreases.
 
 
