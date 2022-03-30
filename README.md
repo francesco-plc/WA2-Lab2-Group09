@@ -38,4 +38,9 @@ loadtest -p 10 token.js -n 2 -c 2 http://localhost:8080/validate
 
 ![usl2](server/src/main/resources/usl2.jpg?raw=true "usl2")
 
+As we can see in the graph above the curve has both a slightly lower peak than the graph of point 5 and tends to reach zero faster, 
+this is because adding a constraints (tickets with the same subfield cannot be used more times) and introducing a concurrent data structure 
+(ConcurrentHashMap) the alpha and beta parameters, therefore, increase so that the absolute maximum capacity gain is obtained 𝑁 = √ ((1 − 𝛼) / 𝛽)
+decreases.
+
 

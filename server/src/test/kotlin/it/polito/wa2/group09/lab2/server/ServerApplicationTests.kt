@@ -59,9 +59,9 @@ class ServerApplicationTests {
     @Test
     fun rejectInvalidSub() {
         val baseUrl = "http://localhost:$port"
-        /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+        /** {"sub": "1234567895","vz": "123","exp": 1716239022}*/
         val t = TicketDTO("1",
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY")
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODk1IiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.ltADYGmISeKjSDx4N_PSYjP7hJolxX6A4WEPSHHG1nI")
         val request = HttpEntity(t)
         val response1 = restTemplate.postForEntity<String>("$baseUrl/validate", request)
         val response2 = restTemplate.postForEntity<String>("$baseUrl/validate", request)
