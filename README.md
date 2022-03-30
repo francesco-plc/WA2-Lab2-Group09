@@ -19,14 +19,17 @@
 3) Wait until RESULT are shown in the terminal
 4) When performing consecutive loadtest be sure to stop and run again the Server in order to wipe the tokens hashmap.
 
-#### keep-alive connection
-loadtest -p -k token.js -n 2 -c 2 http://localhost:8080/validate -T application/json
+In `benchmark.js` file modify the loadtest command line to perform different tests such as:
 
-#### time-limit: Max number of seconds to wait until requests no longer go out.
-loadtest -p -t 10 token.js -n 2 -c 2 http://localhost:8080/validate -T application/json
+1) keep-alive connection:
 
-#### -T content-type: set the MIME content type for POST data. Default: text/plain.
-loadtest -p 10 token.js -n 2 -c 2 http://localhost:8080/validate
+`loadtest -p -k token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
+2) time-limit: Max number of seconds to wait until requests no longer go out:
+
+`loadtest -p -t 10 token.js -n [number-of-request] -c [concurrency-level] http://localhost:8080/validate -T application/json`
+3) -T content-type: set the MIME content type for POST data. Default: text/plain:
+
+`loadtest -p 10 token.js -n [number-of-request] -c [concurrency-level]  http://localhost:8080/validate`
 
 <hr/>
 
