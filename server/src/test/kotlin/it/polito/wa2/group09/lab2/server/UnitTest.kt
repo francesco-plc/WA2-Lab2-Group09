@@ -1,6 +1,5 @@
 package it.polito.wa2.group09.lab2.server
 
-import junit.framework.Assert.assertEquals
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +22,7 @@ class UnitTest {
                 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
             )
         }
-        assertEquals("Illegal zone", exception.message);
+        Assertions.assertEquals("Illegal zone", exception.message)
     }
 
     @Test
@@ -60,14 +59,14 @@ class UnitTest {
     @Test
     fun invalidSub() {
         val exception: IllegalArgumentException  = Assertions.assertThrows(IllegalArgumentException::class.java) {
-            /** {"sub": "1234567890","vz": "123","exp": 1716239022}*/
+            /** {"sub": "1234567895","vz": "123","exp": 1716239022}*/
             ticketService.validateTicket(
                 "1",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODk1IiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.ltADYGmISeKjSDx4N_PSYjP7hJolxX6A4WEPSHHG1nI"
             )
             ticketService.validateTicket(
                 "1",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.xtBlm0TSgP29xnsRqdedEZ91WEPwymg8SjTqfw1rprY"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODk1IiwidnoiOiIxMjMiLCJleHAiOjE3MTYyMzkwMjJ9.ltADYGmISeKjSDx4N_PSYjP7hJolxX6A4WEPSHHG1nI"
             )
         }
         assertContains(exception.message.toString(),"Ticket already used!")

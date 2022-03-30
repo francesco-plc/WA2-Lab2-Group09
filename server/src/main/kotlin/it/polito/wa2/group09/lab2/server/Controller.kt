@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class Controller(val ticketService: TicketService) {
-//    @GetMapping("/validate")
-//    fun validate() : Payload {
-//        return Payload("200")
-//    }
+
     @PostMapping("/validate")
     fun posting(@RequestBody ticketDTO: TicketDTO): ResponseEntity<Unit>{
         if(ticketDTO.zone.isEmpty()) return ResponseEntity(HttpStatus.FORBIDDEN )

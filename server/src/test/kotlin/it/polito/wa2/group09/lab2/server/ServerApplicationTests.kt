@@ -65,6 +65,7 @@ class ServerApplicationTests {
         val request = HttpEntity(t)
         val response1 = restTemplate.postForEntity<String>("$baseUrl/validate", request)
         val response2 = restTemplate.postForEntity<String>("$baseUrl/validate", request)
+        assertEquals(HttpStatus.OK, response1.statusCode)
         assertEquals(HttpStatus.FORBIDDEN, response2.statusCode)
     }
 }
