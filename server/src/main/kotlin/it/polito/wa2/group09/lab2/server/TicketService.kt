@@ -12,7 +12,9 @@ class TicketService(val key : Key) {
     var subMap: ConcurrentHashMap<String, Int> = ConcurrentHashMap()
     fun validateTicket(zone : String , token : String){
             try {
+               //jwt automatically control that the expiry timestamp (named “exp”) is still valid
                 val jwt = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token)
+
                 val zones : String = jwt.body["vz"].toString()
                 val sub: String = jwt.body["sub"].toString()
 
@@ -22,9 +24,7 @@ class TicketService(val key : Key) {
                 or the value associated to the key that is always 1.
                 */
                 if(subMap.putIfAbsent(sub, 1) == 1) throw IllegalArgumentException("Ticket already used!")
-                /* val exp : Long = jwt.body["exp"].toString().toLong()
-                   val now : Long = System.currentTimeMillis()/1000
-                   if(exp-now <= 0) throw IllegalArgumentException("Expired ticket")*/
+
             }catch (e : JwtException){
                 throw IllegalArgumentException("${e.message}")
             }
