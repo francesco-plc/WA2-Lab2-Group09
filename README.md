@@ -38,9 +38,9 @@ In `benchmark.js` file modify the loadtest command line to perform different tes
 
 ![usl2](server/src/main/resources/usl2.jpg?raw=true "usl2")
 
-As we can see in the graph above the curve has both a slightly lower peak than the graph of point 5 and tends to reach zero faster, 
-this is because adding a constraints (tickets with the same subfield cannot be used more times) and introducing a concurrent data structure 
-(ConcurrentHashMap) the alpha and beta parameters, therefore, increase so that the absolute maximum capacity gain obtained 𝑁 = √ ((1 − 𝛼) / 𝛽)
+As we can see in the graph above the curve has a slightly lower peak than the graph of point 5 and tends to reach zero faster. 
+this is due to the addition of the constraint "tickets with the same subfield cannot be used more times" and to the introduction of a concurrent data structure 
+(ConcurrentHashMap). The alpha and beta parameters, therefore, increase so that the absolute maximum capacity gain obtained 𝑁 = √ ((1 − 𝛼) / 𝛽)
 decreases.
 
 ### USL Plot Lab2/Point 7 (Keep Alive)
